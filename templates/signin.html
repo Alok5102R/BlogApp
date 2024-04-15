@@ -39,13 +39,13 @@
         </div>
 
         <div class="mt-10">
-          <form action="#">
-            
+          <form action="" method="POST">
+            {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label
-                for="email"
+                for="username"
                 class="mb-1 text-xs tracking-wide text-gray-600"
-                >E-Mail Address:</label
+                >Username:</label
               >
               <div class="relative">
                 <div
@@ -65,9 +65,9 @@
                 </div>
 
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
+                  id="username"
+                  type="name"
+                  name="username"
                   class="
                     text-sm
                     placeholder-gray-500
@@ -79,7 +79,7 @@
                     py-2
                     focus:outline-none focus:border-blue-400
                   "
-                  placeholder="Enter your email"
+                  placeholder="Enter your username"
                 />
               </div>
             </div>
@@ -185,7 +185,7 @@
           <span class="ml-2 text-gray-300"
             >Don't have an account?
             <a
-              href="#"
+              href="/signup"
               class="text-xs ml-2 text-blue-500 font-semibold"
               >Register here</a
             ></span

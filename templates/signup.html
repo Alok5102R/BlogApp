@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,12 +41,13 @@
         </div>
 
         <div class="mt-10">
-          <form action="#">
+          <form action="" method="POST">
+            {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label
-                for="name"
+                for="username"
                 class="mb-1 text-xs tracking-wide text-gray-600"
-                >Name:</label
+                >Username:</label
               >
               <div class="relative">
                 <div
@@ -64,9 +67,9 @@
                 </div>
 
                 <input
-                  id="name"
-                  type="name"
-                  name="name"
+                  id="username"
+                  type="username"
+                  name="username"
                   class="
                     text-sm
                     placeholder-gray-500
@@ -78,7 +81,7 @@
                     py-2
                     focus:outline-none focus:border-blue-400
                   "
-                  placeholder="Enter your name"
+                  placeholder="Enter your username"
                 />
               </div>
             </div>
@@ -168,6 +171,51 @@
                 />
               </div>
             </div>
+            
+            <div class="flex flex-col mb-6">
+              <label
+                for="password2"
+                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                >Confirm Password:</label
+              >
+              <div class="relative">
+                <div
+                  class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-10
+                    text-gray-400
+                  "
+                >
+                  <span>
+                    <i class="fas fa-lock text-blue-500"></i>
+                  </span>
+                </div>
+
+                <input
+                  id="password2"
+                  type="password"
+                  name="password2"
+                  class="
+                    text-sm
+                    placeholder-gray-500
+                    pl-10
+                    pr-4
+                    rounded-2xl
+                    border border-gray-400
+                    w-full
+                    py-2
+                    focus:outline-none focus:border-blue-400
+                  "
+                  placeholder="Confirm your password"
+                />
+              </div>
+            </div>
 
             <div class="flex w-full">
               <button
@@ -226,7 +274,7 @@
           <span class="ml-2 text-gray-300"
             >You have an account?
             <a
-              href="#"
+              href="/signin"
               class="text-xs ml-2 text-blue-500 font-semibold"
               >Login here</a
             ></span
