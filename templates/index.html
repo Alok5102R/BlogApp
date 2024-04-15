@@ -57,20 +57,12 @@
                       href="#"
                       class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     >
-                      Post
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                    >
                       Profile
                     </a>
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/logout"
                       class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     >
                       Logout
@@ -88,7 +80,6 @@
 
           <div class="max-w-2xl mx-auto">
 
-            <form>
             <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 mt-4">
                 <div class="flex justify-between items-center py-2 px-3 border-b dark:border-gray-600">
                     <div class="flex flex-wrap items-center text-gray-100 divide-gray-200 sm:divide-x dark:divide-gray-600">
@@ -127,15 +118,17 @@
                     </div>
                     
                 </div>
+                <form action="/post_blog" method="POST">
+                  {% csrf_token %}
                 <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                     <label for="editor" class="sr-only">Publish post</label>
-                    <textarea id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write your blog..." required></textarea>
+                    <textarea id="editor" name="blog" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write your blog..." required></textarea>
                 </div>
             </div>
             <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                 Post
             </button>
-            </form>
+                </form>
         </div>
 
 

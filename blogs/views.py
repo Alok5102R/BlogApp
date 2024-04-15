@@ -3,6 +3,8 @@ from django.contrib import auth, messages
 import re
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from . import models
+
 # Create your views here.
 
 User = get_user_model()
@@ -10,6 +12,18 @@ User = get_user_model()
 @login_required(login_url='signin') 
 def home(request):
     return render(request, 'index.html')
+
+
+@login_required(login_url='signin') 
+def post_blog(request):
+    if request.method == 'POST':
+        blog = request.POST['blog']
+
+        user = request.user
+        blogProfile = models.Blog.objects.create(user=user, blog=blog)
+        blogProfile.save()
+    return redirect('/')
+
 
 def signup(request):
     if request.method == 'POST':
