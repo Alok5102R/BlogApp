@@ -9,7 +9,7 @@ User = get_user_model()
 
 @login_required(login_url='signin') 
 def home(request):
-    return HttpResponse("Hello")
+    return render(request, 'index.html')
 
 def signup(request):
     if request.method == 'POST':
