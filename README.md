@@ -3,8 +3,14 @@
 This project aims to create a simple Django-based blog application that fulfills the following requirements:
 
 ## Requirements
-1. Design the blog data schema
-2. Create a simple Django application that allows users to:
+1. Environment variables:
+   - DJANGO_KEY
+   - DB_NAME
+   - DB_USER
+   - DB_PASSWORD
+   - DB_HOST
+3. Design the blog data schema
+4. Create a simple Django application that allows users to:
     - Login
     - Signup
     - Write down any blog from the Django admin website
