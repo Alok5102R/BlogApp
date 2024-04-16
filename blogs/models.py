@@ -16,3 +16,10 @@ class Blog(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
+
+class Like(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def __str__(self) -> str:
+        return self.user.username

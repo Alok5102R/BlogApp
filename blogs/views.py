@@ -11,7 +11,13 @@ User = get_user_model()
 
 @login_required(login_url='signin') 
 def home(request):
-    return render(request, 'index.html')
+    blogs = models.Blog.objects.all()
+    username = request.user.username
+    liked_blogs = models.Like.objects.filter(user=request.user)
+    list_liked_blogs = []
+    for blog_id in liked_blogs:
+        list_liked_blogs.append(blog_id.blog_id)
+    return render(request, 'index.html', {"blogs": blogs, "username":username, "list_liked_blogs": list_liked_blogs})
 
 
 @login_required(login_url='signin') 
@@ -23,6 +29,27 @@ def post_blog(request):
         blogProfile = models.Blog.objects.create(user=user, blog=blog)
         blogProfile.save()
     return redirect('/')
+
+
+@login_required(login_url='signin')
+def like_blog(request):
+    user = request.user
+    blog_id = request.GET['blog_id']
+    blog_data = models.Blog.objects.get(blog_id=blog_id)
+    try:
+        liked = models.Blog.objects.get(blog=blog_data, user=user)
+    except:
+        liked = None
+
+    if liked == None:
+        newLike = models.Like.objects.create(blog=blog_data, user=user)
+        blog_data.like_count += 1
+        newLike.save()
+    else:
+        liked.delete()
+        blog_data.like_count -= 1
+    return redirect('/')
+
 
 
 def signup(request):
