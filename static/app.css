@@ -1,1 +1,15 @@
+/* ===== Scrollbar START ===== */
 
+::-webkit-scrollbar{
+    width: 0.3rem;
+  }
+  
+  ::-webkit-scrollbar-track{
+    background: rgb(5, 27, 50);
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background: rgb(27, 94, 169);
+  }
+  
+  /* ===== Scrollbar END ===== */
