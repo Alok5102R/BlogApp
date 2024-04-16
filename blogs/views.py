@@ -15,7 +15,7 @@ User = get_user_model()
 def home(request):
     blogs = models.Blog.objects.all().order_by('-created_at')
     blogs = blogs.annotate(blog_liked=Exists(
-        models.Like.objects.filter(blog=OuterRef('blog_id'))
+        models.Like.objects.filter(blog=OuterRef('blog_id'),user=request.user)
         ))
     paginator_object = Paginator(blogs, 5)
     try:
