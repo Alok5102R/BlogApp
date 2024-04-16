@@ -41,6 +41,7 @@ def post_blog(request):
 def like_blog(request):
     user = request.user
     blog_id = request.GET['blog_id']
+    page_no = request.GET['page_no']
     blog_data = models.Blog.objects.get(blog_id=blog_id)
     try:
         liked = models.Like.objects.get(blog=blog_data, user=user)
@@ -50,11 +51,13 @@ def like_blog(request):
     if liked == None:
         newLike = models.Like.objects.create(blog=blog_data, user=user)
         blog_data.like_count += 1
+        blog_data.save()
         newLike.save()
     else:
         liked.delete()
         blog_data.like_count -= 1
-    return redirect('/')
+        blog_data.save()
+    return redirect("/?page_no="+page_no)
 
 
 

@@ -57,7 +57,7 @@
                       href="#"
                       class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     >
-                      Profile
+                      {{username}}
                     </a>
                   </li>
                   <li>
@@ -151,13 +151,15 @@
                     <textarea id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Blank blog..." readonly>{{blog.blog}}</textarea>
                 </div>
             </div>
+            
             {% if blog.blog_liked == True %}
-            <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                <a href="/like_blog?blog_id={{blog.blog_id}}">Unlike</a>
+            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+              <a href="/like_blog?blog_id={{blog.blog_id}}&page_no={{blogs.number}}">Unlike</a>
             </button>
+            </a>
             {% else %}
-            <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-              <a href="/like_blog?blog_id={{blog.blog_id}}">Like</a>
+            <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+              <a href="/like_blog?blog_id={{blog.blog_id}}&page_no={{blogs.number}}">Like</a>
             </button>
             {% endif %}
             </form>
