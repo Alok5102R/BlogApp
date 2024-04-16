@@ -135,7 +135,7 @@
         <!-- <div class="flex flex-wrap items-center text-gray-100 divide-gray-200 sm:divide-x dark:divide-gray-600"> -->
 
         <!-- Blogs List -->
-        {% for blog in blogs reversed %}
+        {% for blog in blogs %}
         <div class="max-w-2xl mx-auto">
 
             <form>
@@ -164,7 +164,35 @@
         </div>
         <br>
         {% endfor %}
-        
+
+
+              <div class="flex justify-center">
+                  <nav class="flex space-x-2" aria-label="Pagination">
+                      {% if blogs.has_previous %}
+                      <a href="/?page_no={{blogs.previous_page_number}}" class="relative inline-flex items-center px-4 py-2 text-sm bg-gray-400 border border-fuchsia-100 hover:border-violet-100 text-black font-semibold cursor-pointer leading-5 rounded-md transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10">
+                          Previous
+                      </a>
+                      {% else %}
+                      <p class="relative inline-flex items-center px-4 py-2 text-sm bg-gray-400 border border-fuchsia-100 hover:border-violet-100 text-black font-semibold cursor-pointer leading-5 rounded-md transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10">
+                        End
+                      </p>
+                      {% endif%}
+                      <a href="" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-gray-700 border border-fuchsia-100 cursor-pointer leading-5 rounded-md transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10">
+                          {{blogs.number}}
+                      </a>
+                      {% if blogs.has_next %}
+                      <a href="/?page_no={{blogs.next_page_number}}" class="relative inline-flex items-center px-4 py-2 text-sm bg-gray-400 border border-fuchsia-100 hover:border-violet-100 text-black font-semibold cursor-pointer leading-5 rounded-md transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10">
+                          Next
+                      </a>
+                      {% else %}
+                      <p class="relative inline-flex items-center px-4 py-2 text-sm bg-gray-400 border border-fuchsia-100 hover:border-violet-100 text-black font-semibold cursor-pointer leading-5 rounded-md transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10">
+                        End
+                      </p>
+                      {% endif%}
+                  </nav>
+              </div>
+              <br><br>
+
 
         <script src="https://cdn.tailwindcss.com"></script>
     </body>

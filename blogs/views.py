@@ -4,6 +4,7 @@ import re
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from . import models
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -11,13 +12,19 @@ User = get_user_model()
 
 @login_required(login_url='signin') 
 def home(request):
-    blogs = models.Blog.objects.all()
+    blogs = models.Blog.objects.all().order_by('-created_at')
+    paginator_object = Paginator(blogs, 3)
+    try:
+        page_no = request.GET['page_no']
+    except:
+        page_no = 1
+    blogs_list = paginator_object.get_page(page_no)
     username = request.user.username
     liked_blogs = models.Like.objects.filter(user=request.user)
     list_liked_blogs = []
     for blog_id in liked_blogs:
         list_liked_blogs.append(blog_id.blog_id)
-    return render(request, 'index.html', {"blogs": blogs, "username":username, "list_liked_blogs": list_liked_blogs})
+    return render(request, 'index.html', {"blogs": blogs_list, "username":username, "list_liked_blogs": list_liked_blogs})
 
 
 @login_required(login_url='signin') 
