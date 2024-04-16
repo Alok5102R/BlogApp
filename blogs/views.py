@@ -37,10 +37,10 @@ def like_blog(request):
     blog_id = request.GET['blog_id']
     blog_data = models.Blog.objects.get(blog_id=blog_id)
     try:
-        liked = models.Blog.objects.get(blog=blog_data, user=user)
+        liked = models.Like.objects.get(blog=blog_data, user=user)
     except:
         liked = None
-
+        
     if liked == None:
         newLike = models.Like.objects.create(blog=blog_data, user=user)
         blog_data.like_count += 1
