@@ -13,7 +13,13 @@ User = get_user_model()
 
 @login_required(login_url='signin') 
 def home(request):
-    blogs = models.Blog.objects.all().order_by('-created_at')
+    blogs = {}
+    if request.method == 'POST':
+        search_content = request.POST['search_content']
+        if search_content:
+            blogs = models.Blog.objects.filter(blog__icontains=search_content).order_by('-created_at')
+    else:
+        blogs = models.Blog.objects.all().order_by('-created_at')
     blogs = blogs.annotate(blog_liked=Exists(
         models.Like.objects.filter(blog=OuterRef('blog_id'),user=request.user)
         ))
