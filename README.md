@@ -1,6 +1,6 @@
 # BlogBit: A Blog Application
 
-This project aims to create a simple Django-based blog application that fulfills the following requirements:
+This project aims to create a Django-based blog application that fulfills the following requirements:
 
 ## Requirements
 1. Environment variables:
@@ -10,7 +10,7 @@ This project aims to create a simple Django-based blog application that fulfills
    - DB_PASSWORD
    - DB_HOST
 3. Design the blog data schema
-4. Create a simple Django application that allows users to:
+4. Create a Django application that allows users to:
     - Login
     - Signup
     - Write down any blog from the Django admin website
