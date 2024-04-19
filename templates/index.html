@@ -104,7 +104,7 @@
 
           <!-- Post Blog -->
 
-          <div class="max-w-2xl mx-auto">
+          <div class="max-w-5xl mx-auto">
 
             <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 mt-4">
                 <div class="flex justify-between items-center py-2 px-3 border-b dark:border-gray-600">
@@ -162,30 +162,31 @@
 
         <!-- Blogs List -->
         {% for blog in blogs %}
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-5xl mx-auto">
 
             <form>
-            <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 mt-4">
+            <div class="mb-4 w-full h-3/4 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 mt-4">
                 <div class="flex justify-between items-center py-2 px-3 border-b dark:border-gray-600">
                     <div class="flex flex-wrap items-center text-gray-100 divide-gray-200 sm:divide-x dark:divide-gray-600">
-                      ⚪{{blog.user.username}} | {{blog.created_at}}
+                      ⚪{{blog.user.username}}
                     </div>
                     
                 </div>
                 <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                     <label for="editor" class="sr-only">Publish post</label>
-                    <textarea id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Blank blog..." readonly>{{blog.blog}}</textarea>
+                    <textarea id="editor" rows="8" class="resize-none block px-0 w-full h-[84%] text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Blank blog..." readonly>{{blog.blog}}</textarea>
                 </div>
+                <p class="text-gray-400 ml-4">{{blog.created_at}}</p>
             </div>
             
             {% if blog.blog_liked == True %}
             <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-              <a href="/like_blog?blog_id={{blog.blog_id}}&page_no={{blogs.number}}">Unlike</a>
+              <a href="/like_blog?blog_id={{blog.blog_id}}&page_no={{blogs.number}}">Unlike | {{blog.like_count}} 🤍</a>
             </button>
             </a>
             {% else %}
             <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-              <a href="/like_blog?blog_id={{blog.blog_id}}&page_no={{blogs.number}}">Like</a>
+              <a href="/like_blog?blog_id={{blog.blog_id}}&page_no={{blogs.number}}">Like | {{blog.like_count}} 🤍</a>
             </button>
             {% endif %}
             </form>
