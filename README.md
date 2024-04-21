@@ -1,6 +1,14 @@
 # BlogBit: A Blog Application
 
 This project aims to create a Django-based blog application that fulfills the following requirements:
+1. Design the blog data schema
+2. Create a Django application that allows users to:
+    - Login
+    - Signup
+    - Write down any blog from the Django admin website
+    - Build list and detail views of blogs
+    - Add pagination (To display 5 blogs on a page)
+    - Implement tagging functionality and searching based on tags and blogs
 
 ## Requirements
 1. Environment variables:
@@ -9,21 +17,13 @@ This project aims to create a Django-based blog application that fulfills the fo
    - DB_USER
    - DB_PASSWORD
    - DB_HOST
-3. Design the blog data schema
-4. Create a Django application that allows users to:
-    - Login
-    - Signup
-    - Write down any blog from the Django admin website
-    - Build list and detail views of blogs
-    - Add pagination (To display 5 blogs on a page)
-    - Implement tagging functionality and searching based on tags
 
 ## Getting Started
 To get started with the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/blog-app.git
+   git clone https://github.com/Alok5102R/BlogApp.git
    ```
 2. Install dependencies:
    ```bash
@@ -56,7 +56,7 @@ To get started with the project, follow these steps:
 - Blog listing and detail views: Displays a list of blogs with pagination support and allows users to view individual blog posts.
 - Tagging functionality: Allows users to tag their blog posts and search for blogs based on tags.
 
-## Contributing
+## Contributions
 Contributions are welcome! If you have any suggestions, feature requests, or bug reports, please open an issue or submit a pull request.
 
 ## License
