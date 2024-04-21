@@ -52,7 +52,7 @@ To get started with the project, follow these steps:
 
 ## Features
 - User authentication: Allows users to sign up and log in.
-- Blog creation: Users can write and publish their blogs from the Django admin interface.
+- Blog creation: Users can write and publish their blogs.
 - Blog listing and detail views: Displays a list of blogs with pagination support and allows users to view individual blog posts.
 - Tagging functionality: Allows users to tag their blog posts and search for blogs based on tags.
 
