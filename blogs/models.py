@@ -11,6 +11,7 @@ class Blog(models.Model):
     blog_id = models.UUIDField(primary_key=True,default=uuid.uuid4)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.TextField(blank=True)
+    tags = models.TextField(blank=True)
     like_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
 

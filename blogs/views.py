@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from . import models
 from django.core.paginator import Paginator
-from django.db.models import Exists, OuterRef
+from django.db.models import Exists, OuterRef, Q
 
 # Create your views here.
 
@@ -17,7 +17,7 @@ def home(request):
     if request.method == 'POST':
         search_content = request.POST['search_content']
         if search_content:
-            blogs = models.Blog.objects.filter(blog__icontains=search_content).order_by('-created_at')
+            blogs = models.Blog.objects.filter(Q(blog__icontains=search_content) | Q(tags__icontains=search_content)).order_by('-created_at')
     else:
         blogs = models.Blog.objects.all().order_by('-created_at')
     blogs = blogs.annotate(blog_liked=Exists(
@@ -36,9 +36,10 @@ def home(request):
 def post_blog(request):
     if request.method == 'POST':
         blog = request.POST['blog']
+        tags = request.POST['tags']
 
         user = request.user
-        blogProfile = models.Blog.objects.create(user=user, blog=blog)
+        blogProfile = models.Blog.objects.create(user=user, blog=blog, tags=tags)
         blogProfile.save()
     return redirect('/')
 
