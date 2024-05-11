@@ -50,6 +50,14 @@ To get started with the project, follow these steps:
 - **static/**: Contains static files such as CSS, JavaScript, and images.
 - **requirements.txt**: Lists the Python dependencies required for the project.
 
+## Application Preview
+
+<img align="center" src="https://github.com/Alok5102R/BlogApp/blob/master/static/img/blogregister.jpg" alt="blogregister">
+<img align="center" src="https://github.com/Alok5102R/BlogApp/blob/master/static/img/bloglogin.jpg" alt="bloglogin">
+<img align="center" src="https://github.com/Alok5102R/BlogApp/blob/master/static/img/bloghome1.jpg" alt="bloghome1">
+<img align="center" src="https://github.com/Alok5102R/BlogApp/blob/master/static/img/bloghome2.jpg" alt="bloghome2">
+<img align="center" src="https://github.com/Alok5102R/BlogApp/blob/master/static/img/blogsearch.jpg" alt="blogsearch">
+
 ## Features
 - User authentication: Allows users to sign up and log in.
 - Blog creation: Users can write and publish their blogs.
